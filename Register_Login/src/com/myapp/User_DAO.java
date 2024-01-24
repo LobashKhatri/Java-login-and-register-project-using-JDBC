@@ -1,7 +1,9 @@
 package com.myapp;
 
+import java.lang.invoke.StringConcatFactory;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class User_DAO {
@@ -33,6 +35,31 @@ public class User_DAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+	}
+	
+	public static void loginUser(String email, String password) {
+		String query="select * from user_credentials where user_mail=? and user_password=?";
+		
+		try {
+			PreparedStatement pstm= con.prepareStatement(query);
+			pstm.setString(1, email);
+			pstm.setString(2, password);
+			
+			ResultSet resultSet= pstm.executeQuery();
+			
+			while(resultSet.next()) {
+				String nameString= resultSet.getString(4);
+				System.out.println("Welcome : "+nameString);
+			}
+			
+			
+		} catch (Exception e) {
+			System.out.println("Something wrond:::::::");
+			e.printStackTrace();
+			
+		}
+		
 		
 	}
 	

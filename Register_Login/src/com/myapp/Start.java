@@ -2,6 +2,8 @@ package com.myapp;
 
 import java.util.Scanner;
 
+import javax.security.auth.login.LoginContext;
+
 public class Start {
 
 	public static void main(String[] args) {
@@ -44,7 +46,21 @@ public class Start {
 				break;
 
 			case 2:
-				System.out.println("LOGGED IN");
+				System.out.println("Enter Your Email:");
+				String email1= in.nextLine();
+				System.out.println("Enter Password:");
+				String password1=in.nextLine();
+				
+				new User_DAO();
+				User_DAO.loginUser(email1, password1);
+				
+//				if (checkBoolean) {
+//					System.out.println("Login Succeful:::::::::");
+//				} else {
+//					System.out.println("Wrond Credentials::::::");
+//				}
+				
+				
 				break;
 
 			default:
